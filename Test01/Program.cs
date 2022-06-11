@@ -94,5 +94,6 @@
                     break;
             }
         }
+        static void Matrice() { }
     }
 }

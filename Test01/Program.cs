@@ -6,6 +6,24 @@
         {
             //Test01Stack();
             //Test02BK();
+            MasiniMarca car = new MasiniMarca();
+            car.MasinaNoua("negru", "audi");
+            car.MasinaNoua("albastru", "bmw");
+            car.MasinaNoua("mov", "opel");
+            car.Stats();
+            List<AutoVehicul> masini = new List<AutoVehicul>();
+            masini.Add(new BMW());
+            masini.Add(new Audi());
+            masini.Add(new Mercedes());
+            foreach (var masina in masini)
+            {
+                masina.brand();
+                masina.tractiune();  
+                masina.caiPutere();
+            }
+            BMW masina1 = new BMW();
+            masina1 = new Mercedes();
+            masina1.brand();
         }
         static void Test01Stack()
         {
@@ -19,7 +37,7 @@
             test01.View();
             //test01.Pop();
             //test01.Pop2(); 
-            test01.Pop3(1);
+            //test01.Pop3(1);
             test01.View();
         }
         static void Test02BK()//generare patrat perfect

@@ -15,7 +15,7 @@ namespace Test01
     {
         void caiPutere();
     }
-    internal class BMW  : AutoVehicul , Putere
+    internal class BMW  : AutoVehicul 
     {
        virtual public void brand()
         {
@@ -32,7 +32,7 @@ namespace Test01
             Console.WriteLine("Tractiune spate.");
         }
     }
-    internal class Audi : AutoVehicul, Putere
+    internal class Audi : AutoVehicul
     {
         public void brand()
         {

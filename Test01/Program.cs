@@ -6,6 +6,354 @@
         {
             //Test01Stack();
             //Test02BK();
+            //Greddy();
+            //GreddyTest();
+            //GreddyTest2();
+            int[] u = { 2, 3, 3, 4, 4, 4, 3 };
+            int[] v = { 1, 2, 3, 4, 5, 6, 6 };
+            //Console.WriteLine(Ex2(u, v));
+            //spirala();
+            //contur();
+            //conturv2();
+            //matrice();
+            //serpuire();
+        }
+        static void serpuire()
+        {
+            int n = 5; int m = 7;
+            int[,] matrice = new int[n, m];
+            viewMatrix2(matrice);
+            Console.WriteLine();
+            for(int s = 0; s <= n + m; s++)
+            {
+                if (s % 2 == 0)
+                {
+                    for(int i = n-1; i >= 0; i--)
+                    {
+                        for(int j = 0; j < m; j++)
+                        {
+                            if(i+j== s)
+                                matrice[i, j] = i+j;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < n; i++)
+                    {
+                        for (int j = 0; j < m; j++)
+                        {
+                            if (i + j == s) 
+                            {
+                                matrice[i, j] = 2;
+                            }
+                        }
+                    }
+                }
+            }
+            viewMatrix2(matrice);
+        }
+        static void matrice()
+        {
+            
+            int n = 8; int m = 8;
+            int[,] matrice = new int[n, m];
+            viewMatrix2(matrice);
+            Console.WriteLine();
+            for (int i = 0; i < n; i++)
+            {
+                for(int j= 0; j < m; j++)
+                {
+                    if (i + j < n - 1 && i <= j) //zona 1
+                    {
+                        matrice[i, j] = 1;
+                    }
+                    if (i + j >= n - 1 && i < j) //zona 2
+                    {
+                        matrice[i, j] = 2;
+                    }
+                    if (i + j > n - 1 && i >= j) //zona 3
+                    {
+                        matrice[i, j] = 3;
+                    }
+                    if (i + j <= n - 1 && i > j) //zona 4
+                    {
+                        matrice[i, j] = 4;
+                    }
+                }
+            }
+            viewMatrix2(matrice);
+        }
+        static void conturv2()
+        {
+            int n = 8; int m = 10;
+            int[,] matrice = new int[n, m];
+            viewMatrix2(matrice);
+            Console.WriteLine();
+            for (int j = 0; j < n; j++)
+            {
+                if (j % 2 == 1)
+                {
+                    for (int i = j; i < m - j-1; i++)
+                    {
+                        matrice[j, i] = 1;
+                    }
+                    for (int i = j; i < n - j-1; i++)
+                    {
+                        matrice[i, m - j-1] = 1;
+                    }
+                    for (int i = m - j-1; i > j; i--)
+                    {
+                        matrice[n - j-1, i] = 1;
+                    }
+                    for (int i = n - j-1; i > 0; i--)
+                    {
+                        matrice[i, j] = 1;
+                    }
+                }
+            }
+            viewMatrix2(matrice);
+        }
+        static void contur()
+        {
+            int n = 8; int m = 9;
+            int[,] matrice = new int[n, m];
+            viewMatrix2(matrice);
+            Console.WriteLine();
+            for (int i = 0; i < m - 1; i++)
+            {
+                matrice[0, i] = 1;
+            }
+            for (int i = 0; i < n - 1; i++)
+            {
+                matrice[i, m - 1] = 1;
+            }
+            for (int i = m - 1; i >= 1; i--)
+            {
+                matrice[n - 1, i] = 1;
+            }
+            for (int i = n - 1; i > 0; i--)
+            {
+                matrice[i, 0] = 1;
+            }
+            viewMatrix2(matrice);
+        }
+        static void spirala()
+        {
+            int n = 9;
+            int[,] matrice = new int [n,n];
+            viewMatrix2(matrice);
+            Console.WriteLine();
+            for (int j = 0; j < n/2; j++)
+            {
+                for (int i = j; i < n - 1 - j; i++)//zona 1
+                    matrice[j, i] = 1;
+                for (int i = j; i < n - 1 - j; i++)//zona 2
+                    matrice[i, n - 1 - j] = 1;
+                for (int i = n - j - 1; i > j; i--)//zona 3
+                    matrice[n-1-j, i] = 1;
+                for (int i = n - j - 1; i > 0; i--)//zona 4
+                    matrice[i, j] = 1;
+            }
+            viewMatrix2(matrice);
+        }
+        static void problema2()
+        {
+            int n = 8;
+            int[,] matr = new int[n, n];
+            int nr = n;
+            for (int i = 0; i < n; i++)
+            {
+                nr = n - i;
+                for (int j = 0; j < n; j++)
+                {
+
+                    if (i + j == n - 1)
+                    {
+                        matr[i, j] = 0;
+                    }
+                    if (i + j < n - 1)
+                    {
+                        matr[i, j] = nr - 1;
+                        nr--;
+                    }
+                    else
+                    {
+                        matr[i, j] = nr - 1;
+                        nr++;
+                    }
+                }
+            }
+            viewMatrix2(matr);
+        }
+        static void viewMatrix2(int[,] matrix)
+        {
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write(matrix[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+        static int Ex2(int[]u , int[] v)
+        {
+            int pU = 1, pV = 1;
+            int n = u.Length, m = v.Length;
+            int pu = 0, pv = 0;
+            for(int i = 0; i < n-1; i++)
+            {
+                for (int k = i+1; k < n; k++)
+                {
+                    if (u[i] == u[k])
+                    {
+                        pU++;                       
+                    }
+                    if (pU > pu)
+                    {
+                        pu = pU;                        
+                    }
+                }
+                pU = 1;         
+            }
+            for(int i = 0; i < m-1; i++)
+            {
+                for (int k = i+1; k < m; k++)
+                {
+                    if (v[i] == v[k])
+                    {
+                        pV++;                      
+                    }
+                    if (pV > pv)
+                    {
+                        pv = pV;                        
+                    }
+                }
+                pV = 1;
+            }
+            Console.WriteLine("Pu: " + pu);
+            Console.WriteLine("PV: " + pv);
+
+            if (pu < pv)
+                return -1;
+            else if(pu == pv)
+                return 0;
+            else
+                return 1;
+        }
+        static void GreddyTest2()
+        {
+            int[] s = { 1, 4, 7, 9, 10 };
+            int[] f = { 3, 3, 5, 7, 8, 19, 20, 22 };
+            int n = s.Length;
+            int m = f.Length;
+            for (int i = 0; i < m; i++)
+            {
+                if (i < n)
+                {
+                    if (s[i] % 2 == 0 && f[i] % 2 == 0) 
+                    {
+                        if(s[i] > f[i])
+                        {
+                            
+                            Console.Write(f[i]+" " + s[i]+" ");
+                        }
+                        else
+                        {
+                            Console.Write(s[i] + " " + f[i] + " ");
+                        }
+                    }
+                    else
+                    {
+                        if (s[i] % 2 == 0)
+                        {
+                            Console.Write(s[i] + " ");
+                        }
+                        if (f[i] % 2 == 0)
+                        {
+                            Console.Write(f[i] + " ");
+                        }
+                    }   
+                }
+                else
+                {
+                    if (f[i] % 2 == 0)
+                    {
+                        Console.Write(f[i] + " ");
+                    }
+                }
+            }
+        }
+        static void GreddyTest()
+        {
+            int[] s = { 1, 4, 7, 9, 10};
+            int[] f = { 3, 3, 5, 7, 8, 19, 20, 22 };
+            int n = s.Length;
+            int m = f.Length;
+            for (int i = 0; i < m; i++)
+            {
+                if (i < n)
+                {
+                    if (s[i] % 2 == 0)
+                    {
+                        if (f[i] % 2 == 0)
+                        {
+                            if (s[i] > f[i])
+                            {
+                                Console.Write($"{f[i]} {s[i]} ");
+                            }
+                            else
+                            {
+                                Console.Write($"{s[i]} {f[i]} ");
+                            }
+                        }
+                        else
+                        {
+                            Console.Write(s[i] + " ");
+                        }
+                    }else if (f[i] % 2 == 0)
+                    {
+                        Console.Write(f[i] + " ");
+                    }
+                }
+                else
+                {
+                    if (f[i] % 2 == 0)
+                    {
+                        Console.Write(f[i]+" ");
+                    }
+                }
+            }
+        }
+        static void Greddy()
+        {
+            int[] s = { 1, 3, 0, 5, 8, 5 };
+            int[] f = { 2, 4, 6, 7, 9, 9 };
+            int n = s.Length;//6
+            int i, j;
+
+            Console.Write("Following activities are selected : ");
+
+            // The first activity always gets selected
+            i = 0;
+            Console.Write(s[i] + " ");
+
+            // Consider rest of the activities
+            for (j = 1; j < n; j++)
+            {
+                // If this activity has start time greater than or
+                // equal to the finish time of previously selected
+                // activity, then select it
+                if (s[j] >= f[i])
+                {
+                    Console.Write(s[j] + " ");
+                    i = j;
+                }
+            }
+        }
+        static void Obiecte()
+        {
             MasiniMarca car = new MasiniMarca();
             car.MasinaNoua("negru", "audi");
             car.MasinaNoua("albastru", "bmw");
@@ -18,12 +366,9 @@
             foreach (var masina in masini)
             {
                 masina.brand();
-                masina.tractiune();  
+                masina.tractiune();
                 masina.caiPutere();
             }
-            BMW masina1 = new BMW();
-            masina1 = new Mercedes();
-            masina1.brand();
         }
         static void Test01Stack()
         {

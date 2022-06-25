@@ -4,19 +4,95 @@
     {
         static void Main(string[] args)
         {
+
             //Test01Stack();
             //Test02BK();
             //Greddy();
             //GreddyTest();
             //GreddyTest2();
-            int[] u = { 2, 3, 3, 4, 4, 4, 3 };
-            int[] v = { 1, 2, 3, 4, 5, 6, 6 };
-            //Console.WriteLine(Ex2(u, v));
+            //Console.WriteLine(Ex2());
             //spirala();
             //contur();
             //conturv2();
             //matrice();
             //serpuire();
+            //NrComplex();
+            //problema1();
+            problema2();
+        }
+        static void problema1()
+        {
+            Random random = new Random();
+            int n = random.Next(5, 25);
+            int m = random.Next(5, 25);
+            char[,] matr = new char[n, m];
+            char a = 'a';
+            char b = 'A';
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    if (j % 2 == 0)
+                    {
+                        matr[i, j] = a;
+                    }
+                    else
+                    {
+                        matr[i, j] = b;
+                    }
+                }
+                a++;
+                b++;
+            }
+            viewMatrix(matr);
+        }
+        static void problema2()
+        {
+            int n = 8;
+            int[,] matr = new int[n, n];
+            int nr = n;
+            for (int i = 0; i < n; i++)
+            {
+                nr = n - i;
+                for (int j = 0; j < n; j++)
+                {
+
+                    if (i + j == n - 1)
+                    {
+                        matr[i, j] = 0;
+                    }
+                    if (i + j < n - 1)
+                    {
+                        matr[i, j] = nr - 1;
+                        nr--;
+                    }
+                    else
+                    {
+                        matr[i, j] = nr - 1;
+                        nr++;
+                    }
+                }
+            }
+            viewMatrix2(matr);
+        }
+        static void viewMatrix(char[,] matrix)
+        {
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write(matrix[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+        static void NrComplex()
+        {
+            Complex a = new Complex();a.init(2, 6);
+            Complex b = new Complex();b.init(3, 4);
+            Complex c = new Complex();
+            c = a * b;
+            Console.WriteLine(c.view()); 
         }
         static void serpuire()
         {
@@ -157,35 +233,6 @@
             }
             viewMatrix2(matrice);
         }
-        static void problema2()
-        {
-            int n = 8;
-            int[,] matr = new int[n, n];
-            int nr = n;
-            for (int i = 0; i < n; i++)
-            {
-                nr = n - i;
-                for (int j = 0; j < n; j++)
-                {
-
-                    if (i + j == n - 1)
-                    {
-                        matr[i, j] = 0;
-                    }
-                    if (i + j < n - 1)
-                    {
-                        matr[i, j] = nr - 1;
-                        nr--;
-                    }
-                    else
-                    {
-                        matr[i, j] = nr - 1;
-                        nr++;
-                    }
-                }
-            }
-            viewMatrix2(matr);
-        }
         static void viewMatrix2(int[,] matrix)
         {
             for (int i = 0; i < matrix.GetLength(0); i++)
@@ -197,8 +244,10 @@
                 Console.WriteLine();
             }
         }
-        static int Ex2(int[]u , int[] v)
+        static int Ex2()
         {
+            int[] u = { 2, 3, 3, 4, 4, 4, 3 };
+            int[] v = { 1, 2, 3, 4, 5, 6, 6 };
             int pU = 1, pV = 1;
             int n = u.Length, m = v.Length;
             int pu = 0, pv = 0;
@@ -287,8 +336,8 @@
         }
         static void GreddyTest()
         {
-            int[] s = { 1, 4, 7, 9, 10};
-            int[] f = { 3, 3, 5, 7, 8, 19, 20, 22 };
+            int[] s = { 2, 6, 7, 9, 10};
+            int[] f = { 1, 4, 5, 7, 8, 19, 20, 22 };
             int n = s.Length;
             int m = f.Length;
             for (int i = 0; i < m; i++)

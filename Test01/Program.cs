@@ -10,7 +10,7 @@
             //Greddy();
             //GreddyTest();
             //GreddyTest2();
-            Ex2();
+            //Ex2();
             //spirala();
             //contur();
             //conturv2();
@@ -19,6 +19,45 @@
             //NrComplex();
             //problema1();
             //problema2();
+            //Intls();
+            P47();
+        }
+        static void Intls()
+        {
+            INTLS a = new INTLS(123459);
+            a.test();
+        }
+        /// <summary>
+        /// Afiseaza nr care se repeta intr- un tablou
+        /// </summary>
+        private static void P47()
+        {
+            Random rnd = new Random();
+            int[] v = new int[100];
+            int[] freq = new int[100];
+            for (int i = 0; i < 100; i++)
+            {
+                v[i] = rnd.Next(99);
+            }
+            for (int i = 0; i < 100; i++)
+            {
+                Console.Write(v[i] + " ");
+            }
+            Console.WriteLine();
+            for (int i = 0; i < 100; i++)
+            {
+                freq[v[i]]++;
+                Console.Write($"{freq[v[i]]} ");
+            }
+            Console.WriteLine("\nNumerele care se repeta sunt: ");
+            for (int i = 0; i < 100; i++)
+            {
+                if (freq[i] > 1)
+                {
+                    Console.Write(i + " ");
+                }
+            }
+
         }
         static void problema1()
         {

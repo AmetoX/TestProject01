@@ -10,7 +10,7 @@
             //Greddy();
             //GreddyTest();
             //GreddyTest2();
-            //Console.WriteLine(Ex2());
+            Ex2();
             //spirala();
             //contur();
             //conturv2();
@@ -18,7 +18,7 @@
             //serpuire();
             //NrComplex();
             //problema1();
-            problema2();
+            //problema2();
         }
         static void problema1()
         {
@@ -88,11 +88,13 @@
         }
         static void NrComplex()
         {
-            Complex a = new Complex();a.init(2, 6);
-            Complex b = new Complex();b.init(3, 4);
-            Complex c = new Complex();
+            Complex a = new Complex();a.init(2, 6,3);
+            Complex b = new Complex();b.init(3, 4,5);
+            Complex c = new Complex();Complex d = new Complex();
             c = a * b;
-            Console.WriteLine(c.view()); 
+            d = a / b;
+            Console.WriteLine(c.view());
+            Console.WriteLine(d.view());
         }
         static void serpuire()
         {
@@ -108,7 +110,7 @@
                     {
                         for(int j = 0; j < m; j++)
                         {
-                            if(i+j== s)
+                            if (i + j == s) 
                                 matrice[i, j] = i+j;
                         }
                     }
@@ -244,52 +246,49 @@
                 Console.WriteLine();
             }
         }
-        static int Ex2()
+        static void Ex2()
         {
             int[] u = { 2, 3, 3, 4, 4, 4, 3 };
             int[] v = { 1, 2, 3, 4, 5, 6, 6 };
-            int pU = 1, pV = 1;
-            int n = u.Length, m = v.Length;
-            int pu = 0, pv = 0;
-            for(int i = 0; i < n-1; i++)
-            {
-                for (int k = i+1; k < n; k++)
-                {
-                    if (u[i] == u[k])
-                    {
-                        pU++;                       
-                    }
-                    if (pU > pu)
-                    {
-                        pu = pU;                        
-                    }
-                }
-                pU = 1;         
-            }
-            for(int i = 0; i < m-1; i++)
-            {
-                for (int k = i+1; k < m; k++)
-                {
-                    if (v[i] == v[k])
-                    {
-                        pV++;                      
-                    }
-                    if (pV > pv)
-                    {
-                        pv = pV;                        
-                    }
-                }
-                pV = 1;
-            }
-            Console.WriteLine("Pu: " + pu);
-            Console.WriteLine("PV: " + pv);
+            int[] powU = Pow(u);
+            int[] powV = Pow(v);
+        }
+        private static int[] Pow(int[] v)
+        {
+            int[] freq = new int[201]; //monitorizeaza aparitiile pentru ficere nr din v
+                                       //(nr din v sunt intre -100 si 100 => 201 valori)
 
-            if (pu < pv)
-                return -1;
-            else if(pu == pv)
-                return 0;
-            else
-                return 1;
+            int notZeroCount = 0;    //numara cate valori apar cel putin o data    
+            for (int i = 0; i < v.Length; i++)
+            {
+                if (freq[v[i] + 100] == 0) //daca este prima data cand gasim numarul crestem contorul        
+                    notZeroCount++;
+                freq[v[i] + 100]++; // ex: freq[0] monitorizeaza aparitiile lui -100
+                                    // freq[1] -> -99
+                                    //freq[2] -> -98
+                                    //...
+                                    //freq[199] -> 99
+                                    //freq[200] -> 100
+            }
+            int[] pow = new int[notZeroCount];
+            int pos = 0;
+            //adaug in vectorul putere frecventele mai mari decat 0
+            for (int i = 0; i < freq.Length; i++)
+            {
+                if (freq[i] > 0)
+                {
+                    pow[pos] = freq[i];
+                    pos++;
+                }
+
+            }
+            BubbleSort(pow);
+            for (int i = 0; i < pow.Length; i++)
+            {
+                Console.Write(pow[i] + " ");
+            }
+            Console.WriteLine();
+            return pow;
         }
         static void GreddyTest2()
         {

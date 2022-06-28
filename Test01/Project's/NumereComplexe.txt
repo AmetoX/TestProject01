@@ -1,0 +1,67 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ALgFundPartial2
+{
+    class HyperComplex
+    {
+        public double real;
+        public double i;
+        public double j;
+        public HyperComplex(double real, double imaginaryi, double imaginaryj)
+        {
+            this.real = real;
+            this.i = imaginaryi;
+            this.j = imaginaryj;
+        }
+        public HyperComplex() : this(0, 0, 0) { }
+        public static HyperComplex operator +(HyperComplex x, HyperComplex y)
+        {
+            return new HyperComplex(x.real + y.real, x.i + y.i, x.j + y.j);
+        }
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(real + " ");
+            if (i < 0)
+                sb.Append(i + "i ");
+            else
+                sb.Append("+ " + i + "i ");
+            if (j < 0)
+                sb.Append(j + "j ");
+            else
+                sb.Append("+ " + j + "j ");
+
+            //   sb.Append($"{real} + {i}i + {j}j");
+
+            return sb.ToString();
+           
+        }
+        public static HyperComplex operator*(HyperComplex x, HyperComplex y)
+        {
+            HyperComplex res = new HyperComplex();
+            res.real += x.real * y.real;
+            res.i += x.real * y.i;
+            res.j += x.real * y.j;
+            res.i += x.i * y.real;
+            res.real -= x.i * y.i;
+            res.j += x.j * y.real;
+            res.real -= x.j * y.j;
+            return res;
+        }
+        public static HyperComplex operator /(HyperComplex x, HyperComplex y)
+        {
+            HyperComplex z = new HyperComplex(y.real, -1 * y.i, -1 * y.j);
+            x = x * z;
+            y = y * z;
+            Console.WriteLine(y.ToString());
+            Console.WriteLine(z.ToString());
+            // Console.WriteLine(y.real + " " + y.i +" "+ y.j);
+            return new HyperComplex(x.real / y.real, x.i / y.real, x.j / y.real);
+
+        }
+    }
+}

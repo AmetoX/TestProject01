@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 namespace Test01
 {
     internal class Program
@@ -6,12 +6,28 @@ namespace Test01
         static void Main(string[] args)
         {
             int n = int.Parse(Console.ReadLine());
-            int a = 0;
-            for(int i = 1; i <= n; i++)
+            string[] x = new string[n];
+            x = Console.ReadLine().Split(' ');
+            int cnt = 0;
+            for (int i = 1; i < n; i++)
             {
-                a += (int)Math.Pow(i,i);
+                int pr = int.Parse(x[i-1]);
+                int s1 = 0, s2 = 0, a = pr, aux = int.Parse(x[i]);
+                while (aux != 0)
+                {
+                    s1 = s1 + aux % 10;
+                    aux /= 10;
+                }
+                while (a != 0)
+                {
+                    s2= s2 + a % 10;
+                    a /= 10;
+                }
+                if(s1==s2)
+                    cnt++;
             }
-            Console.WriteLine(a);
+            Console.WriteLine(cnt);
+            
             
             
             

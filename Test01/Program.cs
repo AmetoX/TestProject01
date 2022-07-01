@@ -1,10 +1,22 @@
-﻿namespace Test01
+﻿using System;
+namespace Test01
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-
+            int n = int.Parse(Console.ReadLine());
+            int a = 0;
+            for(int i = 1; i <= n; i++)
+            {
+                a += (int)Math.Pow(i,i);
+            }
+            Console.WriteLine(a);
+            
+            
+            
+          
+            
             //Test01Stack();
             //Test02BK();
             //Greddy();
@@ -20,7 +32,7 @@
             //problema1();
             //problema2();
             //Intls();
-            P47();
+            //P47();
         }
         static void Intls()
         {

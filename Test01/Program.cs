@@ -5,34 +5,6 @@ namespace Test01
     {
         static void Main(string[] args)
         {
-            int n = int.Parse(Console.ReadLine());
-            string[] x = new string[n];
-            x = Console.ReadLine().Split(' ');
-            int cnt = 0;
-            for (int i = 1; i < n; i++)
-            {
-                int pr = int.Parse(x[i-1]);
-                int s1 = 0, s2 = 0, a = pr, aux = int.Parse(x[i]);
-                while (aux != 0)
-                {
-                    s1 = s1 + aux % 10;
-                    aux /= 10;
-                }
-                while (a != 0)
-                {
-                    s2= s2 + a % 10;
-                    a /= 10;
-                }
-                if(s1==s2)
-                    cnt++;
-            }
-            Console.WriteLine(cnt);
-            
-            
-            
-            
-          
-            
             //Test01Stack();
             //Test02BK();
             //Greddy();
@@ -47,13 +19,22 @@ namespace Test01
             //NrComplex();
             //problema1();
             //problema2();
-            //Intls();
+            Intls();
             //P47();
         }
         static void Intls()
         {
             INTLS a = new INTLS(123459);
-            a.test();
+            //a.view();
+            //a.Stview();
+            //Console.WriteLine();
+            INTLS b = new INTLS(1091);
+            //b.view(1091);
+            //b.Stview();
+            //Console.WriteLine();
+            INTLS c = new INTLS();
+            c = a + b;
+            c.Stview();
         }
         /// <summary>
         /// Afiseaza nr care se repeta intr- un tablou

@@ -16,10 +16,11 @@ namespace Test01
         public INTLS(int numar)
         {
             this.numar = numar;
+            int aux = numar;
             while (numar != 0)
             {
-                stack.Push(numar % 10);
-                numar/=10;
+                stack.Push(aux % 10);
+                aux/=10;
             }
             stack3 = stack;
             while (stack.Count >= 1)
@@ -38,7 +39,7 @@ namespace Test01
         {
             int nr = 0;
             int im = 0;
-            INTLS c = new INTLS();
+            INTLS t = new INTLS();
             if (a.stack2.Count > b.stack2.Count)
             {                
                 while (b.stack2.Count >= 1)
@@ -51,11 +52,11 @@ namespace Test01
                     {
                         nr %= 10;
                         im++;
-                        c.stack3.Push(nr);
+                        t.stack3.Push(nr);
                     }
                     else
                     {
-                        c.stack3.Push(nr);
+                        t.stack3.Push(nr);
                     }
                 }
                 while (a.stack2.Count >= 1)
@@ -67,9 +68,9 @@ namespace Test01
                     {
                         nr %= 10;
                         im++;
-                        c.stack3.Push(nr);
+                        t.stack3.Push(nr);
                     }
-                    c.stack3.Push(nr);
+                    t.stack3.Push(nr);
                 }
             }
             else
@@ -84,11 +85,11 @@ namespace Test01
                     {
                         nr %= 10;
                         im++;
-                        c.stack3.Push(nr);
+                        t.stack3.Push(nr);
                     }
                     else
                     {
-                        c.stack3.Push(nr);
+                        t.stack3.Push(nr);
                     }
                 }
                 while (a.stack2.Count >= 1)
@@ -100,21 +101,28 @@ namespace Test01
                     {
                         nr %= 10;
                         im++;
-                        c.stack3.Push(nr);
+                        t.stack3.Push(nr);
                     }
-                    c.stack3.Push(nr);
+                    else
+                    {
+                        t.stack3.Push(nr);
+                    }
                 }
             }
-            c.stack2 = c.stack3;
-            return c;
+            t.stack2 = t.stack3;
+            return t;
         }
         public static INTLS operator *(INTLS a, INTLS b)
         {
-            int nr = 0;
-            int im = 0;
-            INTLS c = new INTLS();
+            int nr = 1;
+            INTLS r = new INTLS(000);        
+            while (nr != b.numar)
+            {
+                r.numar += a.numar;
+                nr++;
+            }
 
-            return c;
+            return r;
         }
         public void view()
         {

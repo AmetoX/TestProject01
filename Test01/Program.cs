@@ -26,15 +26,27 @@ namespace Test01
         {
             INTLS a = new INTLS(123459);
             //a.view();
-            //a.Stview();
-            //Console.WriteLine();
+            a.Stview();
+            Console.WriteLine();
             INTLS b = new INTLS(1091);
             //b.view(1091);
-            //b.Stview();
-            //Console.WriteLine();
+            b.Stview();
+            Console.WriteLine();
             INTLS c = new INTLS();
-            c = a + b;
+            //c = a + b;
             c.Stview();
+            Console.WriteLine();
+            INTLS d = new INTLS();
+            //d = a * b;
+            //d.Stview();
+            int nr = 1;
+            int nr2 = 0;
+            while (nr != 1091)
+            {
+                nr2 += 1234569;
+                nr++;
+            }
+            Console.WriteLine(nr2);
         }
         /// <summary>
         /// Afiseaza nr care se repeta intr- un tablou

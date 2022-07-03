@@ -31,11 +31,11 @@ namespace Test01
             b.Stview();
             b.view();
             INTLS c = new INTLS();
-            c = a + b;
-            c.Stview();
-            //INTLS d = new INTLS();
-            //d = a * b;
-            //d.Stview();
+            //c = a + b;
+            //c.Stview();
+            INTLS d = new INTLS();
+            d = a * b;
+            d.Stview();
         }
         /// <summary>
         /// Afiseaza nr care se repeta intr- un tablou

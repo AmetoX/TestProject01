@@ -9,9 +9,10 @@ namespace Test01
     internal class INTLS
     {
         public int numar, numar2;
-        public Stack<int> stack = new Stack<int>();
-        public Stack<int> stack2 = new Stack<int>();
+        public Stack<int> stack = new Stack<int>();// 1 2 3 4 5
+        public Stack<int> stack2 = new Stack<int>();// 5 4 3 2 1
         public Stack<int> stack3 = new Stack<int>();
+        public Stack<int> stack4 = new Stack<int>();// 1 2 3 4 5
         public INTLS() { }
         public INTLS(int numar)
         {
@@ -19,10 +20,11 @@ namespace Test01
             this.numar2 = numar;
             while (numar2 != 0)
             {
-                stack.Push(numar2 % 10);
+                int aux = numar2 % 10;
+                stack.Push(aux);
+                stack4.Push(aux);
                 numar2/=10;
             }
-            stack3 = stack;
             while (stack.Count >= 1)
             {
                 stack2.Push(stack.Pop());
@@ -30,7 +32,7 @@ namespace Test01
         }
         public void Stview()
         {            
-            foreach(var item in stack2)
+            foreach(var item in stack4)
             {
                 Console.Write(item + ",");
             }
@@ -115,9 +117,24 @@ namespace Test01
         }
         public static INTLS operator *(INTLS a, INTLS b)
         {
+            Stack<int> stack5 = new Stack<int>();
             INTLS r = new INTLS();
-
-            return r;
+            int sum = 0;
+            foreach (int aux2 in b.stack2)
+            {
+                foreach (int aux in a.stack2)
+                {
+                    Console.Write(aux + " ");
+                    sum += aux2 * aux;
+                }
+                sum *= 10;
+                Console.WriteLine();
+            }
+            
+            Console.WriteLine("inmultire: "+ sum);
+            r.numar = sum;
+            INTLS s = new INTLS(sum);
+            return s;
         }
         public void view()
         {

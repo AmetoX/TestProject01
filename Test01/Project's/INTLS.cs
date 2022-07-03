@@ -8,7 +8,7 @@ namespace Test01
 {
     internal class INTLS
     {
-        public int numar;
+        public int numar, numar2;
         public Stack<int> stack = new Stack<int>();
         public Stack<int> stack2 = new Stack<int>();
         public Stack<int> stack3 = new Stack<int>();
@@ -16,11 +16,11 @@ namespace Test01
         public INTLS(int numar)
         {
             this.numar = numar;
-            int aux = numar;
-            while (numar != 0)
+            this.numar2 = numar;
+            while (numar2 != 0)
             {
-                stack.Push(aux % 10);
-                aux/=10;
+                stack.Push(numar2 % 10);
+                numar2/=10;
             }
             stack3 = stack;
             while (stack.Count >= 1)
@@ -33,7 +33,8 @@ namespace Test01
             foreach(var item in stack2)
             {
                 Console.Write(item + ",");
-            }            
+            }
+            Console.WriteLine();
         }
         public static INTLS operator +(INTLS a, INTLS b)
         {
@@ -114,13 +115,7 @@ namespace Test01
         }
         public static INTLS operator *(INTLS a, INTLS b)
         {
-            int nr = 1;
-            INTLS r = new INTLS(000);        
-            while (nr != b.numar)
-            {
-                r.numar += a.numar;
-                nr++;
-            }
+            INTLS r = new INTLS();
 
             return r;
         }

@@ -19,8 +19,148 @@ namespace Test01
             //NrComplex();
             //problema1();
             //problema2();
-            Intls();
+            //Intls();
             //P47();
+            //adancime();
+            Lee();
+        }
+        static void Lee()
+        {
+            TextReader load = new StreamReader(@"E:\Coding\TestProject01\Test01\Project's\TXT\Lee.txt");
+            int n = int.Parse(load.ReadLine());
+            int m = int.Parse(load.ReadLine());
+            int[,] matrix2 = new int[n, m];
+            for (int i = 0; i < n; i++)
+            {
+                string[] buffer = load.ReadLine().Split(' ');
+                for (int j = 0; j < m; j++)
+                {
+                    matrix2[i, j] = int.Parse(buffer[j]);
+                }
+            }
+            viewMatrix2(matrix2);
+            Queue A = new Queue();
+            A.Push(new TriData(0, 0, 1));
+            matrix2[0, 0] = 1;
+            while (!A.IsEmpty())
+            {//BFS  (Breadth First Search)
+                TriData t = A.Pop();
+                if (t.l - 1 >= 0) //vecin nord
+                {
+                    if (matrix2[t.l - 1, t.c] == 0)
+                    {
+                        A.Push(new TriData(t.l - 1, t.c, t.v + 1));
+                        matrix2[t.l - 1, t.c] = t.v + 1;
+                    }
+                }
+                if (t.c + 1 < matrix2.GetLength(1)) //vecin est
+                {
+                    if (matrix2[t.l, t.c + 1] == 0)
+                    {
+                        A.Push(new TriData(t.l, t.c + 1, t.v + 1));
+                        matrix2[t.l, t.c + 1] = t.v + 1;
+                    }
+                }
+                if (t.l + 1 < matrix2.GetLength(0))//vecin sud
+                {
+                    if (matrix2[t.l + 1, t.c] == 0)
+                    {
+                        A.Push(new TriData(t.l + 1, t.c, t.v + 1));
+                        matrix2[t.l + 1, t.c] = t.v + 1;
+                    }
+                }
+                if (t.c - 1 >= 0) //vecin vest
+                {
+                    if (matrix2[t.l, t.c - 1] == 0)
+                    {
+                        A.Push(new TriData(t.l, t.c - 1, t.v + 1));
+                        matrix2[t.l, t.c - 1] = t.v + 1;
+                    }
+                }
+                //Console.WriteLine(A.view());
+                viewMatrix2(matrix2);
+                Console.WriteLine();
+            }
+        }
+        private static int[,] matrix;
+        private static bool[,] boolMatrix;
+        private static int border;
+        private static int nrborder;
+        public static void adancime()
+        {
+            TextReader load = new StreamReader(@"E:\Coding\TestProject01\Test01\Project's\TXT\Matrice.txt");
+            int n = int.Parse(load.ReadLine());
+            int m = int.Parse(load.ReadLine());
+            int g = int.Parse(load.ReadLine());
+            matrix = new int[n, m];
+            boolMatrix = new bool[n, m];
+
+            for (int i = 0; i < n; i++)
+            {
+                string[] buffer;
+                buffer = load.ReadLine().Split(' ');
+                for (int j = 0; j < m; j++)
+                {
+                    matrix[i, j] = int.Parse(buffer[j]);
+                    Console.Write(matrix[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+            int[] vector = new int[g];
+
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    if (!boolMatrix[i, j] && matrix[i, j] == 0)
+                    {
+                        border = 0;
+                        nrborder = 0;
+                        PA(i, j);
+                        if (nrborder == 1)
+                        {
+                            for (int k = 1; k <= g; k++)
+                            {
+                                if (k == border)
+                                {
+                                    vector[k - 1]++;
+                                }
+                            }
+                        }
+
+                    }
+
+                }
+            }
+
+            for (int i = 0; i < g; i++)
+            {
+                Console.Write(i + 1 + " : " + vector[i] + " , ");
+            }
+            Console.ReadKey();
+        }
+        static void PA(int i, int j)
+        {
+            if (i >= 0 && j >= 0 && i < matrix.GetLength(0) && j < matrix.GetLength(1) && !boolMatrix[i, j])
+            {
+                if (matrix[i, j] == 0)
+                {
+                    boolMatrix[i, j] = true;
+                    PA(i - 1, j);//sus
+                    PA(i, j + 1);//dreapta
+                    PA(i + 1, j);//jos
+                    PA(i, j - 1);//stanga
+                }
+                else
+                {
+                    if (border != matrix[i, j])
+                    {
+                        nrborder++;
+                        border = matrix[i, j];
+                    }
+                }
+            }
         }
         static void Intls()
         {
@@ -37,6 +177,7 @@ namespace Test01
             d = a * b;
             d.Stview();
         }
+        
         /// <summary>
         /// Afiseaza nr care se repeta intr- un tablou
         /// </summary>

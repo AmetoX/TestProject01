@@ -120,20 +120,31 @@ namespace Test01
             Stack<int> stack5 = new Stack<int>();
             INTLS r = new INTLS();
             int sum = 0;
+            int im = 0;
             foreach (int aux2 in b.stack2)
             {
+                sum = 0;
                 foreach (int aux in a.stack2)
-                {
-                    Console.Write(aux + " ");
-                    sum += aux2 * aux;
+                {                   
+                    sum+= aux2 * aux+im;
+                    if (sum > 9)
+                    {
+                        int aux4 = sum;
+                        sum = sum % 10;
+                        im = aux4 / 10;
+                    }
+                    stack5.Push(sum);
                 }
-                sum *= 10;
-                Console.WriteLine();
+                
             }
-            
-            Console.WriteLine("inmultire: "+ sum);
+            int aux3 = 0;
+            foreach(int aux2 in stack5)
+            {
+                aux3 += aux2;
+            }
+            Console.WriteLine("inmultire: " + aux3);
             r.numar = sum;
-            INTLS s = new INTLS(sum);
+            INTLS s = new INTLS(aux3);
             return s;
         }
         public void view()

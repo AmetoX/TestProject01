@@ -50,6 +50,12 @@ namespace Test01
             }
             val = t;
         }
+        public bool IsEmpty()
+        {
+            if (val.Length < 1)
+                return true;
+            return false;
+        }
         public void View()
         {
             for (int i = 0; i < val.Length; i++) { Console.Write(val[i]+" "); }

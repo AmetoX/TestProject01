@@ -22,7 +22,7 @@ namespace Test01
             //Intls();
             //P47();
             //adancime();
-            Lee();
+            //Lee();
         }
         static void Lee()
         {

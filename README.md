@@ -1,2 +1,19 @@
 # TestProject01
-Algoritmul lui Lee
+            //Test01Stack();
+            //Test02BK();
+            //Greddy();
+            //GreddyTest();
+            //GreddyTest2();
+            //Ex2();
+            //spirala();
+            //contur();
+            //conturv2();
+            //matrice();
+            //serpuire();
+            //NrComplex();
+            //problema1();
+            //problema2();
+            //Intls();
+            //P47();
+            //adancime();
+            //Lee();
